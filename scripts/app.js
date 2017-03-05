@@ -1,15 +1,15 @@
-(function(){
-  "use strict";
-  angular
-    .module("ngClassifieds", ["ngMaterial"])
-    .config(function($mdThemingProvider) {
-      $mdThemingProvider.theme('default')
-        .primaryPalette('teal')
-        .accentPalette('orange');
-    })
-    .directive("helloWorld", function() {
-      return {
-        template: "<h1>{{ message }}</h1>"
-      }
-    });
-})();
+
+angular
+  .module("ngClassifieds", ["ngMaterial", "ui.router"])
+  .config(function($mdThemingProvider, $stateProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('teal')
+      .accentPalette('orange');
+
+    $stateProvider
+      .state('classifieds', {
+        url: '/classifieds',
+        templateUrl: 'components/classifieds/classifieds.tpl.html',
+        controller: 'classifiedsCtrl as vm'
+      })
+  })
